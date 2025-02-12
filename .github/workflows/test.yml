@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
@@ -34,7 +34,7 @@ jobs:
           restore-keys: lint-
       - run: yarn lint
   basic:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
@@ -51,7 +51,7 @@ jobs:
           flags: basic
           functionalities: gcov
   unit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
@@ -77,17 +77,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-20.04, windows-2022, macos-latest]
         node-version: [10.x, 17.x]
         part: [a, b]
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-20.04
             node-version: 16.x
             part: a
-          - os: ubuntu-latest
+          - os: ubuntu-20.04
             node-version: 14.x
             part: a
-          - os: ubuntu-latest
+          - os: ubuntu-20.04
             node-version: 12.x
             part: a
     runs-on: ${{ matrix.os }}
